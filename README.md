@@ -21,7 +21,7 @@ pip install -r requirements.txt
     * [distilgpt2_fine_tuned_coder (params: 82M, size: 291MB)](https://ucdcs-student.ucd.ie/~cwang/autocoder/distilgpt2_fine_tuned_coder.zip)
     * [gpt2_medium_fine_tuned_coder.zip (params: 345M, size: 1.22GB)](https://ucdcs-student.ucd.ie/~cwang/autocoder/gpt2_medium_fine_tuned_coder.zip)
     
-2. Unzip the model and move it to `./model`
+2. Unzip the model and move it to `./model` (create it first)
 3. Run the interact: `python interact.py`
 
 #### Fine-tuning yours
