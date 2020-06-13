@@ -1,8 +1,9 @@
-#  AutoCoder
+# ![](icon.png) AutoCoder
 
 #### A basic and simple tool for code auto completion, fine-tuned from the pytorch [pre-trained GPT-2 variants](https://huggingface.co/transformers/pretrained_models.html) offered by the awesome [🤗 transformers](https://github.com/huggingface/transformers) library.
+
 ### Demo
-[demo](demo.gif)
+![demo](demo.gif)
 
 ### Features
 - Write with Python or Java.
@@ -30,7 +31,7 @@ pip install -r requirements.txt
 2. Start fine-tuning model: `python train.py --model_select distilgpt2` 
 
 ### Generative examples
-```
+```python
 Good Python generation examples by fine-tuned GPT2-medium
 
 -------------Example 1--------------------------------------
@@ -110,4 +111,4 @@ private static int CountCharacters(String str) {
 - [The details of dataset curation and pre-training process](#) (in plan)
 
 ### Extra notes
-For mutli-GPU training, it only works when torch==1.4.0. It will not working when torch==1.5.0. No idea so far how to fix this issue.
+* For mutli-GPU training, it only works when torch==1.4.0. It will not working when torch==1.5.0. No idea so far how to fix this issue.
