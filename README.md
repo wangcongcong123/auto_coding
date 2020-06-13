@@ -15,25 +15,24 @@ Here provides two ways of quick-start. Before that,
 git clone <this repository>
 pip install -r requirements.txt
 ```
-\* For more params setting of training, `python train.py -h`
 
 #### Ready-to-go Interaction
 1. Download the fine-tuned models, here are two versions provided.
     * [distilgpt2_fine_tuned_coder (params: 82M, size: 291MB)](https://ucdcs-student.ucd.ie/~cwang/autocoder/distilgpt2_fine_tuned_coder.zip)
     * [gpt2_medium_fine_tuned_coder.zip (params: 345M, size: 1.22GB)](https://ucdcs-student.ucd.ie/~cwang/autocoder/gpt2_medium_fine_tuned_coder.zip)
-    
 2. Unzip the model and move it to `./model` (create it first)
 3. Run the interact: `python interact.py`
 
 #### Fine-tuning yours
 
-1. Preparing [the dataset](./dataset/README.md)
+1. Preparing [the dataset](./dataset)
 2. Start fine-tuning model: `python train.py --model_select distilgpt2` 
 
-### Generative examples
-```python
-Good Python generation examples by fine-tuned GPT2-medium
+\* For more params setting of training, `python train.py -h`
 
+### Generative examples
+Good Python generation examples by fine-tuned GPT2-medium
+```python
 -------------Example 1--------------------------------------
 Context code: def factorial
 Generated: 
@@ -77,10 +76,10 @@ def quick_sort(collection):
         for element in collection:
             if element > pivot:
                 ...
-
-=============================================================
+```
 Good Java generation examples by fine-tuned GPT2-medium
 
+```javascript
 --------------Example 1-------------------------------------
 Context code: Scanner input= new Scanner(System.in)
 Generated:
@@ -95,12 +94,11 @@ Generated:
 private static int CountCharacters(String str) {
         return str.replaceAll("\\s", "").length();
 }
-
 ```
-\* Although some generated examples look good, it needs to take a grain of salt to judge the model's performance. The model may simply **"remember"** existing code in the training set well.
+\* Although some generated examples look good, it needs to take a grain of salt to judge the model's actual performance. The model may simply **"remembers"** existing code in the training set well.
 
 ### TODO list
-- Expand the dataset and increase context window. Try larger generative models like GPT-2 large or even [GPT-3 variants](https://arxiv.org/pdf/2005.14165.pdf) as proposed recently if the computational resources are allowed.
+- Expand the dataset and increase context window. Try larger generative models like GPT-2 large or even [GPT-3 variants](https://arxiv.org/abs/2005.14165) as proposed recently if the computational resources are allowed.
 - Remove overlapping between training examples and dev examples for contamination studies. That says, to what extent the model memorizes examples rigidly or [at surface heuristics level during training](https://arxiv.org/pdf/1902.01007.pdf).
 - Try some adversarial examples (more complicated for model's reasoning capability testing purpose) to test the robustness of the model.
 - Integrate this into real-life use case such as a code editor - [Sublime Text](https://www.sublimetext.com/)
