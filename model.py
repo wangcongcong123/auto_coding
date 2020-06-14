@@ -13,7 +13,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-class GPTSingleHead():
+class GPTSingleHead(nn.Module):
     """
     Different from directly using GPT2LMHeadModel, this wraps up GPT2LMHeadModel as well as GPT2Tokenizer
     """

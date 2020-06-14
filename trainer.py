@@ -129,9 +129,9 @@ class ModelTrainer():
                  epochs: int = 1,
                  visiable_device: str = "0",
                  scheduler: str = 'warmuplinear',
-                 warmup_ratio: float = 0.2,
+                 warmup_ratio: float = 0.1,
                  optimizer_class: Type[Optimizer] = transformers.AdamW,
-                 optimizer_params: Dict[str, object] = {'lr': 2e-5, 'eps': 1e-6, 'correct_bias': False},
+                 optimizer_params: Dict[str, object] = {'lr': 5e-5, 'eps': 1e-6, 'correct_bias': False},
                  weight_decay: float = 0.01,
                  early_stop: int = 20,
                  # 20 evaluation steps without improving on the early_stop_on metric as specified in dev_evaluator
@@ -193,6 +193,7 @@ class ModelTrainer():
             # In this example, the upstream_layer already integrate the downstream head (namely, simple LM head as in transformers.GPT2LMHeadModel)
             # EmptyHeads is created here only for placeholder purpose
             down_layer = EmptyHeads()
+
         self.down_layer = down_layer
         assert output_path != None
         output_path = os.path.join("tmp", output_path)

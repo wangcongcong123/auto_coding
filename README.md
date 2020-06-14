@@ -1,5 +1,7 @@
 # ![](icon.png) AutoCoder
 
+<a href="/flairNLP/flair/blob/master/CONTRIBUTING.md"><img src="https://camo.githubusercontent.com/8f697c48adc5026cc6d83dd45e42b9b93ee1803c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f6e747269627574696f6e732d77656c636f6d652d627269676874677265656e2e737667" alt="Contributions welcome" data-canonical-src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" style="max-width:100%;"></a> <a href="https://opensource.org/licenses/apache" rel="nofollow"></a>
+
 #### A basic and simple tool for code auto completion, fine-tuned from the pytorch [pre-trained GPT-2 variants](https://huggingface.co/transformers/pretrained_models.html) offered by the awesome [🤗 transformers](https://github.com/huggingface/transformers) library.
 
 ### Demo
@@ -27,6 +29,7 @@ pip install -r requirements.txt
 
 1. Preparing [the dataset](./dataset)
 2. Start fine-tuning model: `python train.py --model_select distilgpt2` 
+3. After fine-tuning, the model will be saved to `./model/distilgpt2_fine_tuned_coder/0_GPTSingleHead` which is exactly the fine-tuned version as provided in Ready-to-go Interaction.
 
 \* For more params setting of training, `python train.py -h`
 
@@ -98,15 +101,16 @@ private static int CountCharacters(String str) {
 \* Although some generated examples look good, it needs to take a grain of salt to judge the model's actual performance. The model may simply **"remembers"** existing code in the training set well.
 
 ### TODO list
-- Expand the dataset and increase context window. Try larger generative models like GPT-2 large or even [GPT-3 variants](https://arxiv.org/abs/2005.14165) as proposed recently if the computational resources are allowed.
+- Expand the dataset (and construct the dataset more carefeully) and increase context window. Try larger generative models like GPT-2 large or even [GPT-3 variants](https://arxiv.org/abs/2005.14165) as proposed recently if the computational resources are allowed.
 - Remove overlapping between training examples and dev examples for contamination studies. That says, to what extent the model memorizes examples rigidly or [at surface heuristics level during training](https://arxiv.org/pdf/1902.01007.pdf).
 - Try some adversarial examples (more complicated for model's reasoning capability testing purpose) to test the robustness of the model.
-- Integrate this into real-life use case such as a code editor - [Sublime Text](https://www.sublimetext.com/)
+- Integrate this into real-life use case such as a code editor - [Sublime Text](https://www.sublimetext.com/), where a threshold of joint probability may need to be studied for code snippet recommendations.
 - Try some ideas of location-aware code generation. For example, if a human coder is sitting writing a comment, the autocoder should be aware of the coder's context (left and right if available) to help complete the corresponding content.
-
+- Model size and inference efficiency is a problem in real-life use cases.
+- Do research in this problem domain to grab a general idea of what work has done in the literature for this particular problem.
 
 ### Blog linked to this project
-- [The details of dataset curation and pre-training process](#) (in plan)
+- [The details of dataset construction and pre-training process](#) (in plan)
 
 ### Extra notes
-* For mutli-GPU training, it only works when torch==1.4.0. It will not working when torch==1.5.0. No idea so far how to fix this issue.
+* For mutli-GPU training, it only works when torch==1.4.0. It will be not working when torch==1.5.0. No idea so far how to fix this issue.
