@@ -15,7 +15,7 @@
 Here provides three ways of quick-start. Before that,
 
 
-#### Load form 🤗transformers models 
+#### Load from 🤗transformers models 
 Now there are [two fine-tuned models](https://huggingface.co/models?search=congcongwang) uploded to 🤗transformers models library. They can be used easily as long as you `pip install transformers`
 
 
