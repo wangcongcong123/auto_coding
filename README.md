@@ -10,6 +10,8 @@
 ### Features
 - Write with Python or Java.
 
+### Blog linked to this project
+- [The details of dataset construction and fine-tunning process](https://wangcongcong123.github.io/AutoCoder/)
 
 ### Quick Start
 Here provides three ways of quick-start. Before that,
@@ -147,8 +149,7 @@ private static int CountCharacters(String str) {
 - Model size and inference efficiency is a problem in real-life use cases.
 - Do research in this problem domain to grab a general idea of what work has done in the literature for this particular problem.
 
-### Blog linked to this project
-- [The details of dataset construction and fine-tunning process](#) (in plan)
+
 
 ### Extra notes
 * For mutli-GPU training, it only works when torch==1.4.0. It will be not working when torch==1.5.0. No idea so far how to fix this issue.
