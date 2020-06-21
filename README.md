@@ -12,13 +12,47 @@
 
 
 ### Quick Start
-Here provides two ways of quick-start. Before that,
+Here provides three ways of quick-start. Before that,
+
+
+#### Load form 🤗transformers models 
+Now there are two fine-tuned models uploded to 🤗transformers models library. They can be used easily as long as you `pip install transformers`
+
+
+```python
+from transformers import AutoTokenizer,AutoModelWithLMHead
+tokenizer = AutoTokenizer.from_pretrained("congcongwang/gpt2_medium_fine_tuned_coder")
+model = AutoModelWithLMHead.from_pretrained("congcongwang/gpt2_medium_fine_tuned_coder")
+# or
+# tokenizer = AutoTokenizer.from_pretrained("congcongwang/distilgpt2_fine_tuned_coder")
+# model = AutoModelWithLMHead.from_pretrained("congcongwang/distilgpt2_fine_tuned_coder")
+use_cuda=True
+context="def factorial"
+lang="python" # can be java as well.
+
+if use_cuda:
+    model.to("cuda")
+
+input_ids = tokenizer.encode("<python> " + context,
+                                     return_tensors='pt') if lang == "python" else tokenizer.encode(
+            "<java> " + context, return_tensors='pt')
+outputs = model.generate(input_ids=input_ids.to("cuda") if use_cuda else input_ids,
+                         max_length=128,
+                         temperature=0.7,
+                         num_return_sequences=1)
+
+decoded = tokenizer.decode(outputs[i], skip_special_tokens=True)
+print(decoded)
+```
+
+
+
+#### Ready-to-go Interaction
 ```
 git clone <this repository>
 pip install -r requirements.txt
 ```
 
-#### Ready-to-go Interaction
 1. Download the fine-tuned models, here are two versions provided.
     * [distilgpt2_fine_tuned_coder (params: 82M, size: 291MB)](https://ucdcs-student.ucd.ie/~cwang/autocoder/distilgpt2_fine_tuned_coder.zip)
     * [gpt2_medium_fine_tuned_coder.zip (params: 345M, size: 1.22GB)](https://ucdcs-student.ucd.ie/~cwang/autocoder/gpt2_medium_fine_tuned_coder.zip)
@@ -26,6 +60,10 @@ pip install -r requirements.txt
 3. Run the interact: `python interact.py`
 
 #### Fine-tuning yours
+```
+git clone <this repository>
+pip install -r requirements.txt
+```
 
 1. Preparing [the dataset](./dataset)
 2. Start fine-tuning model: `python train.py --model_select distilgpt2` 
@@ -110,7 +148,7 @@ private static int CountCharacters(String str) {
 - Do research in this problem domain to grab a general idea of what work has done in the literature for this particular problem.
 
 ### Blog linked to this project
-- [The details of dataset construction and pre-training process](#) (in plan)
+- [The details of dataset construction and fine-tunning process](#) (in plan)
 
 ### Extra notes
 * For mutli-GPU training, it only works when torch==1.4.0. It will be not working when torch==1.5.0. No idea so far how to fix this issue.
