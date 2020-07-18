@@ -51,7 +51,7 @@ print(decoded)
 
 #### Ready-to-go Interaction
 ```
-git clone <this repository>
+git clone https://github.com/wangcongcong123/auto_coding.git
 pip install -r requirements.txt
 ```
 
