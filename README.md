@@ -43,7 +43,7 @@ outputs = model.generate(input_ids=input_ids.to("cuda") if use_cuda else input_i
                          temperature=0.7,
                          num_return_sequences=1)
 
-decoded = tokenizer.decode(outputs[i], skip_special_tokens=True)
+decoded = tokenizer.decode(outputs[0], skip_special_tokens=True)
 print(decoded)
 ```
 
