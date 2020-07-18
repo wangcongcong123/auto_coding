@@ -11,7 +11,7 @@
 - Write with Python or Java.
 
 ### Blog linked to this project
-- [The details of dataset construction and fine-tunning process](https://wangcongcong123.github.io/AutoCoder/)
+- [The details of dataset construction and fine-tuning process](https://wangcongcong123.github.io/AutoCoder/)
 
 ### Quick Start
 Here provides three ways of quick-start. Before that,
