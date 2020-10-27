@@ -7,6 +7,10 @@
 ### Demo
 ![demo](demo.gif)
 
+### [Play on 🤗HF's Model Hub](https://huggingface.co/congcongwang/gpt2_medium_fine_tuned_coder?text=%3Cpython%3E+def+factorial)👇
+
+![](hf_model.png)
+
 ### Features
 - Write with Python or Java.
 
