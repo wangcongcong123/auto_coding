@@ -1,6 +1,6 @@
 tqdm
 sklearn
 transformers
-torch==1.4.0
+torch==2.2.0
 numpy
 wandb
